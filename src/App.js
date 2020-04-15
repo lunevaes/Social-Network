@@ -5,22 +5,48 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Body />
     </div>
   );
 }
+
+const Header = () => {
+  return (
+    <header className="header">
+      <Navigation />
+    </header>
+  )
+}
+
+const Navigation = () => {
+  return (
+    <div className="navigation">
+      <ul className="navigation__list list">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Your Profile</a>
+        </li>
+        <li>
+          <a href="#">Messages</a>
+        </li>
+        <li>
+          <a href="#">Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+const Body = () => {
+  return (
+    <main className="App-body">
+      <img src={logo} className="App-logo" alt="logo" />
+    </main>
+  )
+}
+
 
 export default App;
