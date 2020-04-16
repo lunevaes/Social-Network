@@ -1,0 +1,16 @@
+.Footer {
+  background-color: #4cccd1;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.Footer a {
+  color: white;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.Footer a:hover {
+  text-decoration: underline;
+}

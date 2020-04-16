@@ -1,0 +1,12 @@
+.Profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Userpic {
+  padding: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: #a5ddee;
+}
