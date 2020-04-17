@@ -9,13 +9,13 @@ const Navigation = () => {
           <a className={classes.link} href="#">Home</a>
         </li>
         <li className={classes.item}>
-          <a className={classes.link} href="#">Your Profile</a>
+          <a className={classes.link} href="/profile">Your Profile</a>
         </li>
         <li className={classes.item}>
-          <a className={classes.link} href="#">Messages</a>
+          <a className={classes.link} href="/messages">Messages</a>
         </li>
         <li className={classes.item}>
-          <a className={classes.link} href="#">Posts</a>
+          <a className={classes.link} href="/posts">Posts</a>
         </li>
         <li className={classes.item}>
           <a className={classes.link} href="#">Sign Out</a>

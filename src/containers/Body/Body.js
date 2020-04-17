@@ -1,3 +1,4 @@
+import {BrowserRouter, Route} from "react-router-dom"
 import React from 'react'
 
 import Messages from '../../components/Messages/Messages'
@@ -8,13 +9,15 @@ import classes from './Body.module.css'
 
 const Body = () => {
   return (
-    <main className={classes.Body}>
-      <div className={classes.Wrapper}>
-        <Profile name="Софи" age="23" friends="13"/>
-        <Messages />
-        <Posts />
-      </div>
-    </main>
+    <BrowserRouter>
+      <main className={classes.Body}>
+        <div className={classes.Wrapper}>
+          <Route path='/profile' component={Profile} />
+          <Route path='/messages' component={Messages} />
+          <Route path='/posts' component={Posts} />
+        </div>
+      </main>
+    </BrowserRouter>
   )
 }
 

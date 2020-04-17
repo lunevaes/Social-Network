@@ -2,6 +2,12 @@ import React from 'react'
 import classes from './Profile.module.css'
 
 const Profile = (props) => {
+
+  props = {
+    name: "Софи",
+    age: "23",
+    friends: "13"
+  }
   return (
     <div className={classes.Profile}>
       <div>
