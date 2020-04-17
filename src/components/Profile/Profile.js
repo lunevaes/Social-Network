@@ -1,18 +1,26 @@
 import React from 'react'
 import classes from './Profile.module.css'
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <div className={classes.Profile}>
       <div>
         <div>
           <h2>Профиль</h2>
         </div>
-        <div>
-          <h3>Имя</h3>
-          <p>Возраст</p>
-          <p>Друзья</p>
+        <div className={classes.Info}>
+          <div className={classes.Fields}>
+            <span>Имя</span>
+            <span>Возраст</span>
+            <span>Друзья</span>
+          </div>
+          <div className={classes.Person}>
+            <span>{ props.name }</span>
+            <span>{ props.age }</span>
+            <span>{ props.friends }</span>
+          </div>
         </div>
+
       </div>
 
       <div className={classes.Userpic}>

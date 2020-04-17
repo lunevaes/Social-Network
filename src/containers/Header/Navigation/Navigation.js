@@ -15,6 +15,9 @@ const Navigation = () => {
           <a className={classes.link} href="#">Messages</a>
         </li>
         <li className={classes.item}>
+          <a className={classes.link} href="#">Posts</a>
+        </li>
+        <li className={classes.item}>
           <a className={classes.link} href="#">Sign Out</a>
         </li>
       </ul>

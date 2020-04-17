@@ -1,0 +1,15 @@
+.Post {
+  text-align: center;
+  background-color: #51C1C6;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.Topic {
+  font-weight: bold;
+}
+
+.Text {
+  text-align: left;
+}

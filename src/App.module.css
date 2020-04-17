@@ -1,11 +1,10 @@
 .App {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   flex-grow: 1;
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(18,51,73,1) 100%);
-  background-size: cover;
   background-repeat: no-repeat;
 }

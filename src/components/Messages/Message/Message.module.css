@@ -1,0 +1,18 @@
+.Message {
+  background-color: #51DFE5;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.Message:hover {
+  background-color: #89DEE2;
+}
+
+.Name {
+  font-weight: bold;
+}
+
+.Text {
+
+}

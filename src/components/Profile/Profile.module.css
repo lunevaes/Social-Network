@@ -10,3 +10,21 @@
   height: 100px;
   background-color: #a5ddee;
 }
+
+.Info {
+  display: flex;
+  flex-direction: row;
+}
+
+.Fields {
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.Person {
+  display: flex;
+  flex-direction: column;
+}
