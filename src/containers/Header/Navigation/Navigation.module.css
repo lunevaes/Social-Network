@@ -21,6 +21,7 @@
   -moz-transition: all 1s linear;
   -o-transition: all 1s linear;
   -webkit-transition: all 1s linear;
+  color: #a5ddee;
 }
 
 .link {
@@ -28,9 +29,7 @@
   text-decoration: none;
 }
 
-.link:hover {
-  color: #a5ddee;
-  -moz-transition: all 1s linear;
-  -o-transition: all 1s linear;
-  -webkit-transition: all 1s linear;
+
+.active {
+  color: #5cb0b8;
 }
