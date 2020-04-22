@@ -1,5 +1,7 @@
 import React from 'react'
-import Message from './Message/Message'
+
+import Dialogs from './Dialogs/Dialogs'
+import Friends from './Friends/Friends';
 import classes from './Messages.module.css'
 
 
@@ -7,9 +9,14 @@ const Messages = (props) => {
   return (
     <div className={classes.Messages}>
       <h2>Сообщения</h2>
-      <Message name="Vic" text="Hi"/>
-      <Message name="Mic" text="Hi!"/>
-      <Message name="Nic" text="Hi!!"/>
+      <h3>Друзья</h3>
+      <div className={classes.Friends}>
+        <Friends  />
+      </div>
+      <h3>Диалоги</h3>
+      <div>        
+        <Dialogs />
+      </div>
     </div>
   )
 }
