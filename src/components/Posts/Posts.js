@@ -2,15 +2,33 @@ import React from 'react'
 import Post from './Post/Post'
 import classes from './Posts.module.css'
 
+let postsArray = [
+  {
+    topic: "Понедельник",
+    text: "Дождь"
+  },
+  {
+    topic: "Вторник",
+    text: "Солнечно"
+  },
+  {
+    topic: "Среда",
+    text: "Пасмурно"
+  },
+]
+
+let posts = postsArray.map((post) => {
+  return (
+    <Post topic={post.topic} text={post.text} />
+  )
+})
 
 const Posts = (props) => {
   return (
-    <div className={classes.Posts}>
-      <h2>Новости</h2>
-      <Post topic="Понедельник" text="Дождь"/>
-      <Post topic="Вторник" text="Солнечно"/>
-      <Post topic="Среда" text="Пасмурно"/>
+    <div>
+      { posts }
     </div>
+
   )
 }
 
