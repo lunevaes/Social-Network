@@ -8,22 +8,20 @@ import Posts from './components/Posts/Posts';
 import Profile from './components/Profile/Profile';
 import classes from './App.module.css'
 
-function App() {
-  return (
-    <div className={classes.App}>
-      <BrowserRouter>
-        <Header />
-        <div className={classes.Body}>
-          <div className={classes.Wrapper}>
-            <Route path='/profile' component={Profile} />
-            <Route path='/messages' component={Messages} />
-            <Route path='/posts' component={Posts} />
-          </div>          
+const App = (props) => {
+  return (<div className={classes.App}>
+    <BrowserRouter>
+      <Header/>
+      <div className={classes.Body}>
+        <div className={classes.Wrapper}>
+          <Route path='/profile' render={() => <Profile profileInfo={props.profileInfo}/>}/>
+          <Route path='/messages' render={() => <Messages messagesArray={props.messagesArray} friendsArray={props.friendsArray}/>}/>
+          <Route path='/posts' render={() => <Posts posts={props.posts}/>}/>
         </div>
-        <Footer />
-      </BrowserRouter>
-    </div>
-  );
+      </div>
+      <Footer/>
+    </BrowserRouter>
+  </div>);
 }
 
 export default App;

@@ -11,11 +11,11 @@ const Messages = (props) => {
       <h2>Сообщения</h2>
       <h3>Друзья</h3>
       <div className={classes.Friends}>
-        <Friends  />
+        <Friends friendsArray={props.friendsArray} />
       </div>
       <h3>Диалоги</h3>
-      <div>        
-        <Dialogs />
+      <div>
+        <Dialogs messagesArray={props.messagesArray}/>
       </div>
     </div>
   )

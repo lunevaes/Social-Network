@@ -10,25 +10,12 @@ const Friend = (data, id) => {
     )
 }
 
-const Friends = () => {
-  let array = [
-    {
-      id: 1,
-      name: "Ivan"
-    },
-    {
-      id: 2,
-      name: "Masha"
-    },
-    {
-      id: 3,
-      name: "Irina"
-    }
-  ]
+const Friends = (props) => {
+
   let friend = []
 
-  for (let i = 0; i < array.length; i++) {
-    let newFriend = Friend(array, i)
+  for (let i = 0; i < props.friendsArray.length; i++) {
+    let newFriend = Friend(props.friendsArray, i)
     friend.push(newFriend)
   }
 

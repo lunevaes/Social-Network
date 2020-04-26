@@ -2,12 +2,6 @@ import React from 'react'
 import classes from './Profile.module.css'
 
 const Profile = (props) => {
-
-  props = {
-    name: "Софи",
-    age: "23",
-    friends: "13"
-  }
   return (
     <div className={classes.Profile}>
       <div>
@@ -21,9 +15,9 @@ const Profile = (props) => {
             <span>Друзья</span>
           </div>
           <div className={classes.Person}>
-            <span>{ props.name }</span>
-            <span>{ props.age }</span>
-            <span>{ props.friends }</span>
+            <span>{ props.profileInfo.name }</span>
+            <span>{ props.profileInfo.age }</span>
+            <span>{ props.profileInfo.friends }</span>
           </div>
         </div>
 
