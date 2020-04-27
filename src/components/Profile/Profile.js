@@ -15,9 +15,9 @@ const Profile = (props) => {
             <span>Друзья</span>
           </div>
           <div className={classes.Person}>
-            <span>{ props.profileInfo.name }</span>
-            <span>{ props.profileInfo.age }</span>
-            <span>{ props.profileInfo.friends }</span>
+            <span>{ props.state.profileInfo.name }</span>
+            <span>{ props.state.profileInfo.age }</span>
+            <span>{ props.state.profileInfo.friends }</span>
           </div>
         </div>
 

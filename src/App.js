@@ -14,9 +14,9 @@ const App = (props) => {
       <Header/>
       <div className={classes.Body}>
         <div className={classes.Wrapper}>
-          <Route path='/profile' render={() => <Profile profileInfo={props.profileInfo}/>}/>
-          <Route path='/messages' render={() => <Messages messagesArray={props.messagesArray} friendsArray={props.friendsArray}/>}/>
-          <Route path='/posts' render={() => <Posts posts={props.posts}/>}/>
+          <Route path='/profile' render={() => <Profile state={props.state.profilePage}/>}/>
+          <Route path='/messages' render={() => <Messages state={props.state.messagesPage}/>}/>
+          <Route path='/posts' render={() => <Posts state={props.state.postsPage}/>}/>
         </div>
       </div>
       <Footer/>
