@@ -41,7 +41,8 @@ const state = {
     profileInfo: {
       name: "Софи",
       age: "23",
-      friends: "13"
+      friends: "13",
+      avatar: ""
     }
   }
 }
