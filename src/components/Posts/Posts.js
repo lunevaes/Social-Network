@@ -1,6 +1,10 @@
 import React from 'react'
+
+import { addPost } from '../../redux/state';
 import Post from './Post/Post'
 import classes from './Posts.module.css'
+
+
 
 const Posts = (props) => {
   let posts = props.state.posts.map((post) => {
@@ -8,15 +12,16 @@ const Posts = (props) => {
   })
 
   let newPost = React.createRef()
-
-  let addPost = () => {
+  let addNewPost = () => {
     let text = newPost.current.value
-    alert(text)
+    addPost(text)
+    newPost.current.value = ''
   }
+
 
   return (<div className={classes.Posts}>
     <textarea className="textarea" ref={newPost}></textarea>
-    <button className="button" onClick={addPost}>Добавить пост</button>
+    <button className="button" onClick={addNewPost}>Добавить пост</button>
     {posts}
   </div>)
 }

@@ -1,3 +1,5 @@
+import { rerenderTree } from '../render';
+
 const state = {
   messagesPage: {
     messagesArray: [{
@@ -27,12 +29,15 @@ const state = {
   },
   postsPage: {
     posts: [{
+      id: 1,
       topic: "Понедельник",
       text: "Дождь"
     }, {
+      id: 2,
       topic: "Вторник",
       text: "Солнечно"
     }, {
+      id: 3,
       topic: "Среда",
       text: "Пасмурно"
     }]
@@ -45,6 +50,17 @@ const state = {
       avatar: ""
     }
   }
+}
+
+export const addPost = (postMessage) => {
+  let newPost = {
+    id: state.postsPage.posts.length,
+    topic: "Среда",
+    text: postMessage
+  }
+
+  state.postsPage.posts.push(newPost)
+  rerenderTree(state)
 }
 
 export default state
