@@ -13,13 +13,14 @@ code {
 }
 
 .textarea {
-  width: 100%;
+  width: 98%;
   border: none;
   border-radius: 10px;
   background-color: #AFEEEE;
   color: #4682B4;
   margin-bottom: 15px;
   resize: vertical;
+  padding: 10px;
 }
 
 .textarea:hover {
