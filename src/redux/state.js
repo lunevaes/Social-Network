@@ -1,5 +1,3 @@
-import { rerenderTree } from '../render';
-
 const state = {
   messagesPage: {
     messagesArray: [{
@@ -54,6 +52,10 @@ const state = {
   }
 }
 
+let rerenderTree = () => {
+  console.log("State changed")
+}
+
 export const addPost = (postTopic, postMessage) => {
   let newPost = {
     id: state.postsPage.posts.length,
@@ -71,6 +73,10 @@ export const updatePost = (newPostTopic, newPostText) => {
   state.postsPage.newPostTopic = newPostTopic
   state.postsPage.newPostText = newPostText
   rerenderTree(state)
+}
+
+export const subscribe = (observer) => {
+  rerenderTree = observer
 }
 
 export default state

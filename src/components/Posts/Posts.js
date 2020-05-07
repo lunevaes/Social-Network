@@ -1,10 +1,8 @@
 import React from 'react'
-import { updatePost } from '../../redux/state';
-import { addPost } from '../../redux/state';
+import {updatePost} from '../../redux/state'
+import {addPost} from '../../redux/state'
 import Post from './Post/Post'
 import classes from './Posts.module.css'
-
-
 
 const Posts = (props) => {
   let posts = props.state.posts.map((post) => {
@@ -23,7 +21,6 @@ const Posts = (props) => {
     let topic = newTopic.current.value
     updatePost(topic, text)
   }
-
 
   return (<div className={classes.Posts}>
     <textarea className="textarea" onChange={updateNewPost} ref={newTopic} value={props.state.newPostTopic} placeholder="Введите заголовок"></textarea>
