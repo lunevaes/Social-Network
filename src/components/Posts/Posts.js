@@ -1,6 +1,4 @@
 import React from 'react'
-import {updatePost} from '../../redux/state'
-import {addPost} from '../../redux/state'
 import Post from './Post/Post'
 import classes from './Posts.module.css'
 
@@ -13,13 +11,13 @@ const Posts = (props) => {
   let newTopic = React.createRef()
 
   let addNewPost = () => {
-    addPost(props.state.newPostTopic, props.state.newPostText)
+    props.addPost(props.state.newPostTopic, props.state.newPostText)
   }
 
   let updateNewPost = () => {
     let text = newPost.current.value
     let topic = newTopic.current.value
-    updatePost(topic, text)
+    props.updatePost(topic, text)
   }
 
   return (<div className={classes.Posts}>
