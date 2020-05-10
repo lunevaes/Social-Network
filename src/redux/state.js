@@ -51,31 +51,41 @@ const store = {
       }
     }
   },
-  getState() {
-    return this._state
-  },
   _callSubscriber() {
     console.log("State changed")
   },
-  addPost(postTopic, postMessage) {
-    let newPost = {
-      id: this._state.postsPage.posts.length,
-      topic: postTopic,
-      text: postMessage
-    }
-
-    this._state.postsPage.posts.push(newPost)
-    this._state.postsPage.newPostTopic = ''
-    this._state.postsPage.newPostText = ''
-    this._callSubscriber(this._state)
-  },
-  updatePost(newPostTopic, newPostText) {
-    this._state.postsPage.newPostTopic = newPostTopic
-    this._state.postsPage.newPostText = newPostText
-    this._callSubscriber(this._state)
+  getState() {
+    return this._state
   },
   subscribe(observer) {
     this._callSubscriber = observer
+  },
+  dispatch(action) {
+    switch (action.type) {
+      case 'ADD_POST': {
+        let newPost = {
+          id: this._state.postsPage.posts.length,
+          topic: action.postTopic,
+          text: action.postMessage
+        }
+
+        this._state.postsPage.posts.push(newPost)
+        this._state.postsPage.newPostTopic = ''
+        this._state.postsPage.newPostText = ''
+        this._callSubscriber(this._state)
+        break;
+      }
+      case 'UPDATE_POST': {
+        this._state.postsPage.newPostTopic = action.newPostTopic
+        this._state.postsPage.newPostText = action.newPostText
+        this._callSubscriber(this._state)
+        break;
+      }
+
+      default: {
+        break;
+      }
+    }
   }
 }
 

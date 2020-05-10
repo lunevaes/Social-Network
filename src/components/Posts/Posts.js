@@ -11,13 +11,13 @@ const Posts = (props) => {
   let newTopic = React.createRef()
 
   let addNewPost = () => {
-    props.addPost(props.state.newPostTopic, props.state.newPostText)
+    props.dispatch({type: 'ADD_POST', postTopic: props.state.newPostTopic, postMessage: props.state.newPostText} )
   }
 
   let updateNewPost = () => {
     let text = newPost.current.value
     let topic = newTopic.current.value
-    props.updatePost(topic, text)
+    props.dispatch({type: 'UPDATE_POST', newPostTopic: topic, newPostText: text})
   }
 
   return (<div className={classes.Posts}>
