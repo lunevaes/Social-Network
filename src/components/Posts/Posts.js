@@ -1,6 +1,9 @@
 import React from 'react'
+
+import {addPostActionCreator, updatePostActionCreator} from './../../redux/state'
 import Post from './Post/Post'
 import classes from './Posts.module.css'
+
 
 const Posts = (props) => {
   let posts = props.state.posts.map((post) => {
@@ -11,13 +14,17 @@ const Posts = (props) => {
   let newTopic = React.createRef()
 
   let addNewPost = () => {
-    props.dispatch({type: 'ADD_POST', postTopic: props.state.newPostTopic, postMessage: props.state.newPostText} )
+    let text = props.state.newPostText
+    let topic = props.state.newPostTopic
+    let action = addPostActionCreator(topic, text)
+    props.dispatch(action)
   }
 
   let updateNewPost = () => {
     let text = newPost.current.value
     let topic = newTopic.current.value
-    props.dispatch({type: 'UPDATE_POST', newPostTopic: topic, newPostText: text})
+    let action = updatePostActionCreator(topic, text)
+    props.dispatch(action)
   }
 
   return (<div className={classes.Posts}>

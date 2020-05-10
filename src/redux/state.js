@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD_POST'
+const UPDATE_POST = 'UPDATE_POST'
+
 const store = {
   _state: {
     messagesPage: {
@@ -62,7 +65,7 @@ const store = {
   },
   dispatch(action) {
     switch (action.type) {
-      case 'ADD_POST': {
+      case ADD_POST: {
         let newPost = {
           id: this._state.postsPage.posts.length,
           topic: action.postTopic,
@@ -75,7 +78,7 @@ const store = {
         this._callSubscriber(this._state)
         break;
       }
-      case 'UPDATE_POST': {
+      case UPDATE_POST: {
         this._state.postsPage.newPostTopic = action.newPostTopic
         this._state.postsPage.newPostText = action.newPostText
         this._callSubscriber(this._state)
@@ -88,5 +91,17 @@ const store = {
     }
   }
 }
+
+export const addPostActionCreator = (topic, text) => ({
+  type: 'ADD_POST',
+  postTopic: topic,
+  postMessage: text
+})
+
+export const updatePostActionCreator = (topic, text) => ({
+  type: 'UPDATE_POST',
+  newPostTopic: topic,
+  newPostText: text
+})
 
 export default store
