@@ -1,14 +1,22 @@
-.Dialog {
+.Message {
+  display: inline-block;
   background-color: #51DFE5;
+  text-decoration: none;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
+  width: auto;
 }
 
-.Dialog:hover {
+.Message:hover {
   background-color: #89DEE2;
 }
 
 .Name {
   font-weight: bold;
+  color: white;
+}
+
+.Text {
+  color: white;
 }

@@ -1,0 +1,19 @@
+
+.DialogItem {
+  display: inline-block;
+  background-color: #51DFE5;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.Name {
+  font-weight: bold;
+  color: white;
+}
+
+.Text {
+  color: white;
+}

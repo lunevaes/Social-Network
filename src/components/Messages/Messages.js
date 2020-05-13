@@ -1,7 +1,9 @@
+import {Route} from 'react-router-dom'
 import React from 'react'
 
-import Dialogs from './Dialogs/Dialogs'
-import Friends from './Friends/Friends';
+import Dialog from './Dialog/Dialog';
+import Friends from './Friends/Friends'
+import LastMessages from './LastMessages/LastMessages'
 import classes from './Messages.module.css'
 
 
@@ -13,10 +15,9 @@ const Messages = (props) => {
       <div className={classes.Friends}>
         <Friends friendsArray={props.state.friendsArray} />
       </div>
-      <h3>Диалоги</h3>
-      <div>
-        <Dialogs messagesArray={props.state.messagesArray}/>
-      </div>
+
+      <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={props.state.messagesArray}/>}/>
+      <Route path='/messages/1' render={() => <Dialog state={props.state.messagesArray} dispatch={props.dispatch} id={1}/>}/>
     </div>
   )
 }
