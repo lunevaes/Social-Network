@@ -13,13 +13,13 @@ const Dialog = (props) => {
     alert(text)
   }
 
-  for (let i = 0; i < props.length; i++) {
-
-    if (props.id === props.state[i].id) {
-      let newDialog = DialogItem(props, i)
+  for (let i = 0; i < props.state.length; i++) {
+    let newDialog = DialogItem(props.state, i)
+    if(i+1 == props.id) {
       dialog.push(newDialog)
     }
   }
+
   return (
     <div className={classes.Dialog}>
 

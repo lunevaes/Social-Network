@@ -6,8 +6,26 @@ import Friends from './Friends/Friends'
 import LastMessages from './LastMessages/LastMessages'
 import classes from './Messages.module.css'
 
-
 const Messages = (props) => {
+  let url = window.location.href
+  let id = url.slice(url.lastIndexOf('/') + 1)
+  let showDialog = () => {
+    if (id === 'messages') {
+      return (
+        <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={props.state.messagesArray}/>}/>
+      )
+    } else if (typeof parseInt(id) === 'number' && parseInt(id)>0) {
+      return (
+        <Dialog state={props.state.messagesArray} dispatch={props.dispatch} id={id}/>
+      )
+    } else {
+      return (
+        <p>Something went wrong</p>
+      )
+    }
+  }
+
+
   return (
     <div className={classes.Messages}>
       <h2>Сообщения</h2>
@@ -16,8 +34,8 @@ const Messages = (props) => {
         <Friends friendsArray={props.state.friendsArray} />
       </div>
 
-      <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={props.state.messagesArray}/>}/>
-      <Route path='/messages/1' render={() => <Dialog state={props.state.messagesArray} dispatch={props.dispatch} id={1}/>}/>
+      {showDialog()}
+
     </div>
   )
 }
