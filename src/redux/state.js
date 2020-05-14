@@ -1,7 +1,5 @@
-const ADD_POST = 'ADD_POST'
-const UPDATE_POST = 'UPDATE_POST'
-const ADD_MESSAGE = 'ADD_MESSAGE'
-const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
+import messagesReducer from './messages-reducer';
+import postsReducer from './posts-reducer';
 
 const store = {
   _state: {
@@ -20,6 +18,7 @@ const store = {
         text: "hi!!"
       }],
       newMessage: "",
+      userName: "Софи",
       friendsArray: [{
         id: 1,
         name: "Ivan"
@@ -67,76 +66,10 @@ const store = {
     this._callSubscriber = observer
   },
   dispatch(action) {
-    switch (action.type) {
-      case ADD_POST: {
-        let newPost = {
-          id: this._state.postsPage.posts.length,
-          topic: action.postTopic,
-          text: action.postMessage
-        }
-
-        this._state.postsPage.posts.push(newPost)
-        this._state.postsPage.newPostTopic = ''
-        this._state.postsPage.newPostText = ''
-        this._callSubscriber(this._state)
-        break;
-      }
-
-      case ADD_MESSAGE: {
-        let newMessage = {
-          id: parseInt(action.id),
-          name: this._state.profilePage.profileInfo.name,
-          text:action.messageContent
-        }
-
-        this._state.messagesPage.messagesArray.push(newMessage)
-        this._state.messagesPage.newMessage = ''
-        this._callSubscriber(this._state)
-        break;
-
-      }
-
-      case UPDATE_POST: {
-        this._state.postsPage.newPostTopic = action.newPostTopic
-        this._state.postsPage.newPostText = action.newPostText
-        this._callSubscriber(this._state)
-        break;
-      }
-
-      case UPDATE_MESSAGE: {
-        this._state.messagesPage.newMessage = action.messageContent
-        this._callSubscriber(this._state)
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
+    this._state.postsPage = postsReducer(this._state.postsPage, action)
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+    this._callSubscriber(this._state)
   }
 }
-
-export const addPostActionCreator = (topic, text) => ({
-  type: 'ADD_POST',
-  postTopic: topic,
-  postMessage: text
-})
-
-export const addMessageActionCreator = (id, text) => ({
-  type: 'ADD_MESSAGE',
-  messageContent: text,
-  id: id
-})
-
-export const updatePostActionCreator = (topic, text) => ({
-  type: 'UPDATE_POST',
-  newPostTopic: topic,
-  newPostText: text
-})
-
-export const updateMessageActionCreator = (message) => ({
-  type: 'UPDATE_MESSAGE',
-  messageContent: message
-})
 
 export default store

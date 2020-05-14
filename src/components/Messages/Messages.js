@@ -7,6 +7,7 @@ import LastMessages from './LastMessages/LastMessages'
 import classes from './Messages.module.css'
 
 const Messages = (props) => {
+  debugger;
   let url = window.location.href
 
   let id = url.slice(url.lastIndexOf('/') + 1)

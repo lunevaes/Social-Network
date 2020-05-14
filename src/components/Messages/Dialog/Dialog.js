@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { updateMessageActionCreator, addMessageActionCreator } from '../../../redux/state';
+import { updateMessageActionCreator, addMessageActionCreator } from '../../../redux/messages-reducer';
 import DialogItem from './DialogItem/DialogItem'
 import classes from './Dialog.module.css'
 
@@ -14,11 +13,6 @@ const Dialog = (props) => {
   let user = props.friendsArray[id]
 
   let newAnswer = React.createRef()
-
-  let addAnswer = () => {
-    let text = newAnswer.current.value
-    alert(text)
-  }
 
   let newMessage = props.newMessage
 

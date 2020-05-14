@@ -1,12 +1,12 @@
 .Friend {
-  background-color: #51DFE5;
+  background-color: #5AB8BB;
   margin-right: 20px;
   border-radius: 10px;
   padding: 10px;
 }
 
 .Friend:hover {
-  background-color: #89DEE2;
+  background-color: #65C7CA;
 }
 
 .Name {
