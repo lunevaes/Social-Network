@@ -1,13 +1,11 @@
 import {Route} from 'react-router-dom'
 import React from 'react'
-
-import Dialog from './Dialog/Dialog';
+import Dialog from './Dialog/Dialog'
 import Friends from './Friends/Friends'
 import LastMessages from './LastMessages/LastMessages'
 import classes from './Messages.module.css'
 
 const Messages = (props) => {
-  debugger;
   let url = window.location.href
 
   let id = url.slice(url.lastIndexOf('/') + 1)
@@ -27,7 +25,6 @@ const Messages = (props) => {
       )
     }
   }
-
 
   return (
     <div className={classes.Messages}>

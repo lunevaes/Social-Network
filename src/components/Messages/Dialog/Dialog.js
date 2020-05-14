@@ -3,9 +3,7 @@ import { updateMessageActionCreator, addMessageActionCreator } from '../../../re
 import DialogItem from './DialogItem/DialogItem'
 import classes from './Dialog.module.css'
 
-
 const Dialog = (props) => {
-
   let dialog = []
 
   let id = props.id - 1
