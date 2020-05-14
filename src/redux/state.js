@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD_POST'
 const UPDATE_POST = 'UPDATE_POST'
+const ADD_MESSAGE = 'ADD_MESSAGE'
+const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
 
 const store = {
   _state: {
@@ -17,6 +19,7 @@ const store = {
         name: "Irina",
         text: "hi!!"
       }],
+      newMessage: "",
       friendsArray: [{
         id: 1,
         name: "Ivan"
@@ -78,9 +81,30 @@ const store = {
         this._callSubscriber(this._state)
         break;
       }
+
+      case ADD_MESSAGE: {
+        let newMessage = {
+          id: parseInt(action.id),
+          name: this._state.profilePage.profileInfo.name,
+          text:action.messageContent
+        }
+
+        this._state.messagesPage.messagesArray.push(newMessage)
+        this._state.messagesPage.newMessage = ''
+        this._callSubscriber(this._state)
+        break;
+
+      }
+
       case UPDATE_POST: {
         this._state.postsPage.newPostTopic = action.newPostTopic
         this._state.postsPage.newPostText = action.newPostText
+        this._callSubscriber(this._state)
+        break;
+      }
+
+      case UPDATE_MESSAGE: {
+        this._state.messagesPage.newMessage = action.messageContent
         this._callSubscriber(this._state)
         break;
       }
@@ -98,10 +122,21 @@ export const addPostActionCreator = (topic, text) => ({
   postMessage: text
 })
 
+export const addMessageActionCreator = (id, text) => ({
+  type: 'ADD_MESSAGE',
+  messageContent: text,
+  id: id
+})
+
 export const updatePostActionCreator = (topic, text) => ({
   type: 'UPDATE_POST',
   newPostTopic: topic,
   newPostText: text
+})
+
+export const updateMessageActionCreator = (message) => ({
+  type: 'UPDATE_MESSAGE',
+  messageContent: message
 })
 
 export default store

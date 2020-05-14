@@ -8,7 +8,9 @@ import classes from './Messages.module.css'
 
 const Messages = (props) => {
   let url = window.location.href
+
   let id = url.slice(url.lastIndexOf('/') + 1)
+
   let showDialog = () => {
     if (id === 'messages') {
       return (
@@ -16,7 +18,7 @@ const Messages = (props) => {
       )
     } else if (typeof parseInt(id) === 'number' && parseInt(id)>0) {
       return (
-        <Dialog state={props.state.messagesArray} dispatch={props.dispatch} id={id}/>
+        <Dialog state={props.state.messagesArray} newMessage={props.state.newMessage} friendsArray={props.state.friendsArray} dispatch={props.dispatch} id={id}/>
       )
     } else {
       return (
