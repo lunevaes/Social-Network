@@ -1,7 +1,35 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
 
-const messagesReducer = (state, action) => {
+let initialState = {
+  messagesArray: [{
+    id: 1,
+    name: "Ivan",
+    text: "hi"
+  }, {
+    id: 2,
+    name: "Masha",
+    text: "hi!"
+  }, {
+    id: 3,
+    name: "Irina",
+    text: "hi!!"
+  }],
+  newMessage: "",
+  userName: "Софи",
+  friendsArray: [{
+    id: 1,
+    name: "Ivan"
+  }, {
+    id: 2,
+    name: "Masha"
+  }, {
+    id: 3,
+    name: "Irina"
+  }]
+}
+
+const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE: {
       let newMessage = {
