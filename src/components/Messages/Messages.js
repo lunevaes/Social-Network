@@ -1,11 +1,14 @@
 import {Route} from 'react-router-dom'
 import React from 'react'
-import Dialog from './Dialog/Dialog'
+
+import DialogContainer from './Dialog/DialogContainer';
 import Friends from './Friends/Friends'
 import LastMessages from './LastMessages/LastMessages'
 import classes from './Messages.module.css'
 
 const Messages = (props) => {
+  let state = props.store.getState().messagesPage;
+
   let url = window.location.href
 
   let id = url.slice(url.lastIndexOf('/') + 1)
@@ -13,11 +16,11 @@ const Messages = (props) => {
   let showDialog = () => {
     if (id === 'messages') {
       return (
-        <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={props.state.messagesArray}/>}/>
+        <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={state.messagesArray}/>}/>
       )
     } else if (typeof parseInt(id) === 'number' && parseInt(id)>0) {
       return (
-        <Dialog state={props.state.messagesArray} newMessage={props.state.newMessage} friendsArray={props.state.friendsArray} dispatch={props.dispatch} id={id}/>
+        <DialogContainer store={props.store} state={state} id={id}/>
       )
     } else {
       return (
@@ -26,12 +29,13 @@ const Messages = (props) => {
     }
   }
 
+
   return (
     <div className={classes.Messages}>
       <h2>Сообщения</h2>
       <h3>Друзья</h3>
       <div className={classes.Friends}>
-        <Friends friendsArray={props.state.friendsArray} />
+        <Friends friendsArray={state.friendsArray} />
       </div>
 
       {showDialog()}

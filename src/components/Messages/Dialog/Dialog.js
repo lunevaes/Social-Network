@@ -1,5 +1,4 @@
 import React from 'react'
-import { updateMessageActionCreator, addMessageActionCreator } from '../../../redux/messages-reducer';
 import DialogItem from './DialogItem/DialogItem'
 import classes from './Dialog.module.css'
 
@@ -12,16 +11,13 @@ const Dialog = (props) => {
 
   let newAnswer = React.createRef()
 
-  let newMessage = props.newMessage
-
   let onUpdateMessage = (e) => {
     let message = e.target.value
-    props.dispatch(updateMessageActionCreator(message))
+    props.updateMessage(message)
   }
 
   let onSendMessageClick = () => {
-    let action = addMessageActionCreator(props.id, newMessage)
-    props.dispatch(action)
+    props.sendMessage()
     updateDialog()
   }
 
@@ -40,7 +36,7 @@ const Dialog = (props) => {
     <div className={classes.Dialog}>
       <h3>История переписки с пользователем {user.name}</h3>
       { dialog }
-      <textarea className="textarea" value={newMessage} onChange={onUpdateMessage} placeholder="Введите текст сообщения" ref={newAnswer}></textarea>
+      <textarea className="textarea" value={props.newMessage} onChange={onUpdateMessage} placeholder="Введите текст сообщения" ref={newAnswer}></textarea>
       <button className="button" onClick={onSendMessageClick}>Добавить ответ</button>
     </div>
   )

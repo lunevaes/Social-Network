@@ -1,6 +1,4 @@
 import React from 'react'
-
-import {addPostActionCreator, updatePostActionCreator} from './../../redux/posts-reducer'
 import Post from './Post/Post'
 import classes from './Posts.module.css'
 
@@ -14,17 +12,13 @@ const Posts = (props) => {
   let newTopic = React.createRef()
 
   let addNewPost = () => {
-    let text = props.state.newPostText
-    let topic = props.state.newPostTopic
-    let action = addPostActionCreator(topic, text)
-    props.dispatch(action)
+    props.addPost()
   }
 
   let updateNewPost = () => {
     let text = newPost.current.value
     let topic = newTopic.current.value
-    let action = updatePostActionCreator(topic, text)
-    props.dispatch(action)
+    props.updatePost(topic, text)
   }
 
   return (<div className={classes.Posts}>

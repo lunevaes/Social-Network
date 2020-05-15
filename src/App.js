@@ -3,8 +3,8 @@ import React from 'react'
 import Footer from './containers/Footer/Footer'
 import Header from './containers/Header/Header'
 import Messages from './components/Messages/Messages'
-import Posts from './components/Posts/Posts'
-import Profile from './components/Profile/Profile'
+import PostsContainer from './components/Posts/PostsContainer'
+import ProfileContainer from './components/Profile/ProfileContainer'
 import classes from './App.module.css'
 
 const App = (props) => {
@@ -13,9 +13,9 @@ const App = (props) => {
       <Header/>
       <div className={classes.Body}>
         <div className={classes.Wrapper}>
-          <Route path='/profile' render={() => <Profile state={props.state.profilePage}/>}/>
-          <Route path='/messages' render={() => <Messages state={props.state.messagesPage} dispatch={props.dispatch}/>}/>
-          <Route path='/posts' render={() => <Posts state={props.state.postsPage} dispatch={props.dispatch}/>}/>
+          <Route path='/profile' render={() => <ProfileContainer store={props.store}/>}/>
+          <Route path='/messages' render={() => <Messages store={props.store}/>}/>
+          <Route path='/posts' render={() => <PostsContainer store={props.store}/>}/>
         </div>
       </div>
       <Footer/>
