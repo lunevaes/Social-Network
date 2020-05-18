@@ -1,11 +1,18 @@
 import React from 'react'
 import Profile from './Profile'
+import StoreContext from '../../StoreContext'
 
-const ProfileContainer = (props) => {
-  let state = props.store.getState().profilePage
 
+const ProfileContainer = () => {
   return (
-    <Profile state={state}/>
+    <StoreContext.Consumer>
+      {
+        (store) => {
+          let state = store.getState().profilePage
+          return <Profile state={state}/>
+        }
+      }
+    </StoreContext.Consumer>
   )
 }
 

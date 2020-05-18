@@ -7,15 +7,15 @@ import PostsContainer from './components/Posts/PostsContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import classes from './App.module.css'
 
-const App = (props) => {
+const App = () => {
   return (<div className={classes.App}>
     <BrowserRouter>
       <Header/>
       <div className={classes.Body}>
         <div className={classes.Wrapper}>
-          <Route path='/profile' render={() => <ProfileContainer store={props.store}/>}/>
-          <Route path='/messages' render={() => <Messages store={props.store}/>}/>
-          <Route path='/posts' render={() => <PostsContainer store={props.store}/>}/>
+          <Route path='/profile' render={() => <ProfileContainer/>}/>
+          <Route path='/messages' render={() => <Messages/>}/>
+          <Route path='/posts' render={() => <PostsContainer/>}/>
         </div>
       </div>
       <Footer/>
