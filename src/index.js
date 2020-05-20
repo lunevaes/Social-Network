@@ -1,20 +1,18 @@
 import './index.css'
-
 import {BrowserRouter} from 'react-router-dom'
+import { Provider } from 'react-redux'
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import App from './App'
-import StoreContext from './StoreContext';
 import store from './redux/redux-store'
 
 
 export let rerenderTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
-      <StoreContext.Provider value={store}>
+      <Provider store={store}>
         <App/>
-      </StoreContext.Provider>
+      </Provider>
     </BrowserRouter>,
     document.getElementById('root')
   );

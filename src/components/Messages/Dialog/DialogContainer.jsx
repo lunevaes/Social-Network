@@ -1,41 +1,34 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import {
   addMessageActionCreator,
   updateMessageActionCreator
 } from '../../../redux/messages-reducer'
 import Dialog from './Dialog'
-import StoreContext from '../../../StoreContext'
 
-const DialogContainer = (props) => {
-  return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState().messagesPage
-          let updateMessage = (message) => {
-            store.dispatch(updateMessageActionCreator(message))
-          }
+let url = window.location.href
+let id = url.slice(url.lastIndexOf('/') + 1)
 
-          let sendMessage = () => {
-            let action = addMessageActionCreator(props.id, state.newMessage)
-            store.dispatch(action)
-          }
-
-          return (
-            <Dialog
-              state={state.messagesArray}
-              updateMessage={updateMessage}
-              sendMessage={sendMessage}
-              newMessage={state.newMessage}
-              friendsArray={state.friendsArray}
-              dispatch={store.dispatch}
-              id={props.id}
-            />
-          )
-        }
-      }
-    </StoreContext.Consumer>
-  )
+let mapStateToProps = (state) => {
+  return {
+    state: state.messagesPage.messagesArray,
+    newMessage: state.messagesPage.newMessage,
+    friendsArray: state.messagesPage.friendsArray,
+    id: id
+  }
 }
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    updateMessage: (newMessage) => {
+      dispatch(updateMessageActionCreator(newMessage))
+    },
+    sendMessage: (id, newMessage) => {
+      let action = addMessageActionCreator(id, newMessage)
+      dispatch(action)
+    }
+  }
+}
+
+const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
 
 export default DialogContainer

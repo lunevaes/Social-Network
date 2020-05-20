@@ -3,48 +3,39 @@ import React from 'react'
 import DialogContainer from './Dialog/DialogContainer'
 import Friends from './Friends/Friends'
 import LastMessages from './LastMessages/LastMessages'
-import StoreContext from '../../StoreContext'
 import classes from './Messages.module.css'
 
-const Messages = () => {
+let url = window.location.href
+let id = url.slice(url.lastIndexOf('/') + 1)
+
+const Messages = (props) => {
+  const showDialog = () => {
+    if (id === 'messages') {
+      return (
+        <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={props.messagesPage.messagesArray}/>}/>
+      )
+    } else if (typeof parseInt(id) === 'number' && parseInt(id) > 0) {
+      return (
+        <DialogContainer/>
+      )
+    } else {
+      return (
+        <p>Something went wrong</p>
+      )
+    }
+  }
+
   return (
-    <StoreContext.Consumer>
-      {
-        (store) => {
-          let state = store.getState().messagesPage
-          let url = window.location.href
-          let id = url.slice(url.lastIndexOf('/') + 1)
-          let showDialog = () => {
-            if (id === 'messages') {
-              return (
-                <Route path='/messages' render={() => <LastMessages className={classes.Dialogs} messagesArray={state.messagesArray}/>}/>
-              )
-            } else if (typeof parseInt(id) === 'number' && parseInt(id)>0) {
-              return (
-                <DialogContainer id={id}/>
-              )
-            } else {
-              return (
-                <p>Something went wrong</p>
-              )
-            }
-          }
+    <div className={classes.Messages}>
+      <h2>Сообщения</h2>
+      <h3>Друзья</h3>
+      <div className={classes.Friends}>
+        <Friends friendsArray={props.messagesPage.friendsArray}/>
+      </div>
 
-          return (
-            <div className={classes.Messages}>
-              <h2>Сообщения</h2>
-              <h3>Друзья</h3>
-              <div className={classes.Friends}>
-                <Friends friendsArray={state.friendsArray} />
-              </div>
+      {showDialog()}
 
-              {showDialog()}
-
-            </div>
-          )
-        }
-      }
-    </StoreContext.Consumer>
+    </div>
   )
 }
 

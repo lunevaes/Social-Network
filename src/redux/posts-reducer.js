@@ -24,8 +24,8 @@ const postsReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: state.posts.length,
-        topic: action.postTopic,
-        text: action.postMessage
+        topic: state.newPostTopic,
+        text: state.newPostText
       }
 
       state.posts.push(newPost)
@@ -53,10 +53,8 @@ export const updatePostActionCreator = (topic, text) => ({
 })
 
 
-export const addPostActionCreator = (topic, text) => ({
-  type: 'ADD_POST',
-  postTopic: topic,
-  postMessage: text
+export const addPostActionCreator = () => ({
+  type: 'ADD_POST'
 })
 
 export default postsReducer
