@@ -1,5 +1,9 @@
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const UPDATE_MESSAGE = 'UPDATE_MESSAGE'
+const UPDATE_URL = 'UPDATE_URL'
+
+let url = window.location.href
+let id = url.slice(url.lastIndexOf('/') + 1)
 
 let initialState = {
   messagesArray: [{
@@ -17,6 +21,7 @@ let initialState = {
   }],
   newMessage: "",
   userName: "Софи",
+  url: id,
   friendsArray: [{
     id: 1,
     name: "Ivan"
@@ -33,19 +38,28 @@ const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE: {
       let newMessage = {
-        id: parseInt(action.id),
+        id: parseInt(state.url),
         name: state.userName,
-        text: action.messageContent
+        text: state.newMessage
       }
+      let newState = {...state}
+      newState.messagesArray = [...state.messagesArray]
 
-      state.messagesArray.push(newMessage)
-      state.newMessage = ''
-      return state
+      newState.messagesArray.push(newMessage)
+      newState.newMessage = ''
+      return newState
     }
 
     case UPDATE_MESSAGE: {
-      state.newMessage = action.messageContent
-      return state
+      let newState = {...state}
+      newState.newMessage = action.messageContent
+      return newState
+    }
+
+    case UPDATE_URL: {
+      let newState = {...state}
+      newState.url = action.url
+      return newState
     }
 
     default: {
@@ -63,6 +77,11 @@ export const addMessageActionCreator = (id, text) => ({
 export const updateMessageActionCreator = (message) => ({
   type: 'UPDATE_MESSAGE',
   messageContent: message
+})
+
+export const updateUrlActionCreator = (url) => ({
+  type: 'UPDATE_URL',
+  url: url
 })
 
 export default messagesReducer

@@ -28,16 +28,20 @@ const postsReducer = (state = initialState, action) => {
         text: state.newPostText
       }
 
-      state.posts.push(newPost)
-      state.newPostTopic = ''
-      state.newPostText = ''
-      return state
+      let newState = {...state}
+      newState.posts = [...state.posts]
+      newState.posts.push(newPost)
+      newState.newPostTopic = ''
+      newState.newPostText = ''
+      return newState
     }
 
     case UPDATE_POST: {
-      state.newPostTopic = action.newPostTopic
-      state.newPostText = action.newPostText
-      return state
+      let newState = {...state}
+
+      newState.newPostTopic = action.newPostTopic
+      newState.newPostText = action.newPostText
+      return newState
     }
 
     default: {
